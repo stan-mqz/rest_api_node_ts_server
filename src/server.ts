@@ -20,8 +20,5 @@ const server = express()
 
 server.use('/products', router)
 
-//Routing
-
-
 
 export default server
