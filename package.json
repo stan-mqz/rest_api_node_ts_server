@@ -8,7 +8,6 @@
   },
   "author": "Stan",
   "license": "ISC",
-  "type": "module",
   "devDependencies": {
     "@types/express": "^5.0.0",
     "nodemon": "^3.1.9",

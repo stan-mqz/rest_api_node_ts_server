@@ -17,6 +17,7 @@ const connectDataBase = async () => {
 connectDataBase()
 
 const server = express()
+server.use(express.json())
 
 server.use('/products', router)
 
