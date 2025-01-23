@@ -10,5 +10,8 @@ describe('GET /api', () => {
         expect(res.status).toBe(200)
         expect(res.headers['content-type']).toMatch(/json/)
         expect(res.body.message).toBe('Desde APi')
+
+        expect(res.status).not.toBe(404)
+        expect(res.body.message).not.toBe('Not Found')
     })
 })
