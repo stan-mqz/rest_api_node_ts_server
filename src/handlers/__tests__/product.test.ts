@@ -10,6 +10,26 @@ describe('POST / Product', () => {
         expect(response.body.errors).toHaveLength(4)
     })
 
+    test('It should display validation errors if price is not greater than 0', async () => {
+        const response = await request(server).post('/products').send({
+            name: 'Laptopt',
+            price: 0
+        })
+        expect(response.status).toBe(400)
+        expect(response.body).toHaveProperty('errors')
+        expect(response.body.errors).toHaveLength(1)
+    })
+
+    test('It should validate price is a number', async () => {
+        const response = await request(server).post('/products').send({
+            name: 'Laptopt',
+            price: "string"
+        })
+        expect(response.status).toBe(400)
+        expect(response.body).toHaveProperty('errors')
+        expect(response.body.errors).toHaveLength(2)
+    })
+
    test('It should create a new product', async () => {
     const response = await request(server).post('/products').send({
         name: 'Product 1 - Testing',
