@@ -14,7 +14,6 @@ router.get('/:id',
     getProductById
 )
 
-
 router.post('/',   
      body('name').notEmpty().withMessage('El nombre del producto no debe estar vacio'),
      body('price')

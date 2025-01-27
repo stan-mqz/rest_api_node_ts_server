@@ -19,6 +19,7 @@ connectDataBase()
 const server = express()
 server.use(express.json())
 
+//Endpoint /products/lo que tenga el resto de la ruta
 server.use('/products', router)
 
 server.get('/api', (req, res) => {
