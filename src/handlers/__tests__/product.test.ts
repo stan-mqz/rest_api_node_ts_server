@@ -146,6 +146,27 @@ describe('PUT /products/:id', () => {
     })
 })
 
+describe('PATCH /products/:id', () => {
+    test('It should return a 404 response for a non-existen product', async () => {
+        const productId = 2000
+        const response = await request(server).patch(`/products/${productId}`)
+
+        expect(response.status).toBe(404)
+        expect(response.body.error).toBe('Producto no encontrado')
+        expect(response.status).not.toBe(200)
+        expect(response.body).not.toHaveProperty('data')
+    })
+
+    test('It should update the product availability', async () => {
+        const response = await request(server).patch('/products/1')
+        expect(response.status).toBe(200)
+        expect(response.body).toHaveProperty('data')
+        expect(response.body.data.availability).toBe(false)
+        expect(response.status).not.toBe(404)
+        expect(response.status).not.toBe(400)
+        expect(response.body).not.toHaveProperty('errors')
+    })
+
 describe('DELETE /products/:id', () => {
     test('It should check a valid ID', async () => {
         const response = await request(server).delete('/products/not-valid-url')
@@ -174,3 +195,5 @@ describe('DELETE /products/:id', () => {
     })
 
 })
+})
+
