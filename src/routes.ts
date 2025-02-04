@@ -12,6 +12,31 @@ import { handleInputErrors } from "./middleware";
 
 const router = Router();
 
+/**
+ *@swagger
+ *components:
+ *  schemas:
+ *      Product:
+ *         type: object
+ *         properties:
+ *          id:
+ *            type: integer
+ *           description: The product ID
+ *           example: 1
+ *          name:
+ *           type: string
+ *           description: The product name
+ *           example: "Monitor Curvo"
+ *         price:
+ *           type: number
+ *           description: The product price
+ *           example: 200
+ *        availability:
+ *          type: boolean
+ *         description: The product availability
+ *         example: true
+ */
+
 router.get("/", getProducts);
 
 // /:Cualquier nombre de variable
@@ -51,7 +76,7 @@ router.put(
     .withMessage("El precio del producto no debe estar vacio")
     .custom((value) => value > 0)
     .withMessage("El precio no puede ser negativo"),
-  body('availability').isBoolean().withMessage('Valor no valido'),
+  body("availability").isBoolean().withMessage("Valor no valido"),
   handleInputErrors,
   updateProduct
 );
