@@ -13,17 +13,17 @@ import { handleInputErrors } from "./middleware";
 const router = Router();
 
 /**
- *@swagger
- *components:
- *  schemas:
- *      Product:
- *         type: object
- *         properties:
- *          id:
- *            type: integer
+ * @swagger
+ * components:
+ *   schemas:
+ *     Product:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: integer
  *           description: The product ID
  *           example: 1
- *          name:
+ *         name:
  *           type: string
  *           description: The product name
  *           example: "Monitor Curvo"
@@ -31,11 +31,31 @@ const router = Router();
  *           type: number
  *           description: The product price
  *           example: 200
- *        availability:
- *          type: boolean
- *         description: The product availability
- *         example: true
+ *         availability:
+ *           type: boolean
+ *           description: The product availability
+ *           example: true
  */
+
+/**
+ * @swagger
+ * /products:
+ *   get: 
+ *     summary: Get all products
+ *     tags: 
+ *       - Product
+ *     description: Retrieve a list of products   
+ *     responses: 
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
+ */
+
 
 router.get("/", getProducts);
 
