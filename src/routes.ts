@@ -43,7 +43,7 @@ const router = Router();
  *   get:
  *     summary: Get all products
  *     tags:
- *       - Product
+ *       - Products
  *     description: Retrieve a list of products
  *     responses:
  *       200:
@@ -62,7 +62,7 @@ const router = Router();
  *   get:
  *     summary: Get a product by ID
  *     tags:
- *       - Product
+ *       - Products
  *     description: Return a product based on a single ID
  *     parameters:
  *       - in: path
@@ -106,13 +106,63 @@ const router = Router();
  *                               type: number
  *                               example: 3.99 
  *      responses:
- *        201:
- *            description: Product created successfulyl
- *        400:
+ *       201:
+ *          description: Successful response
+ *          content:
+ *               application/json:
+ *                      schema:
+ *                          ref: '#/components/schemas/Product'
+ *       400:
  *            description: Bad Request - Invalid Input Data
  * 
  * 
 */
+
+
+/**
+ * @swagger
+ * /products/{id}:
+ *   put:
+ *     summary: Updates a product with user input
+ *     tags: 
+ *       - Products
+ *     description: Returns the updated product
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: Product ID
+ *         required: true
+ *         schema:
+ *           type: integer 
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema: 
+ *             type: object
+ *             properties:
+ *               name: 
+ *                 type: string
+ *                 example: "Monitor"
+ *               price:
+ *                 type: number
+ *                 example: 3.99
+ *               availability:
+ *                 type: boolean
+ *                 example: true             
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       400:
+ *         description: Bad Request - Invalid ID or Invalid Input Data 
+ *       404:
+ *         description: Product Not Found
+ */
+
 router.get("/", getProducts);
 
 // /:Cualquier nombre de variable
