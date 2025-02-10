@@ -40,12 +40,12 @@ const router = Router();
 /**
  * @swagger
  * /products:
- *   get: 
+ *   get:
  *     summary: Get all products
- *     tags: 
+ *     tags:
  *       - Product
- *     description: Retrieve a list of products   
- *     responses: 
+ *     description: Retrieve a list of products
+ *     responses:
  *       200:
  *         description: Successful response
  *         content:
@@ -56,7 +56,63 @@ const router = Router();
  *                 $ref: '#/components/schemas/Product'
  */
 
+/**
+ * @swagger
+ * /products/{id}:
+ *   get:
+ *     summary: Get a product by ID
+ *     tags:
+ *       - Product
+ *     description: Return a product based on a single ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: Product ID
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: Product not found
+ *       400:
+ *         description: Bad request
+ */
 
+/**
+ * @swagger
+ * /products:
+ *   post: 
+ *      summary: Create a new product
+ *      tags:
+ *          - Products
+ *      description: Returns a new record in the database
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema: 
+ *                      type: object
+ *                      properties:
+ *                            name: 
+ *                                type: string
+ *                                example: "Monitor"
+ *                            price:
+ *                               type: number
+ *                               example: 3.99 
+ *      responses:
+ *        201:
+ *            description: Product created successfulyl
+ *        400:
+ *            description: Bad Request - Invalid Input Data
+ * 
+ * 
+*/
 router.get("/", getProducts);
 
 // /:Cualquier nombre de variable
