@@ -190,6 +190,34 @@ const router = Router();
  *         description: Product Not Found
  */
 
+/**
+ * @swagger
+ * /products/{id}:
+ *  delete:
+ *     summary: Deletes a product by a given ID
+ *     tags:
+ *       - Products
+ *     description: Returns a confirmation message
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: Product ID to delete 
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: string
+ *               value: 'Producto Eliminado'
+ *       400:
+ *         description: Bad Request - Invalid ID or Invalid Input Data
+ *       404:
+ *         description: Product Not Found
+ */
 
 router.get("/", getProducts);
 
