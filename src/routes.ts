@@ -87,7 +87,7 @@ const router = Router();
 /**
  * @swagger
  * /products:
- *   post: 
+ *   post:
  *      summary: Create a new product
  *      tags:
  *          - Products
@@ -96,15 +96,15 @@ const router = Router();
  *          required: true
  *          content:
  *              application/json:
- *                  schema: 
+ *                  schema:
  *                      type: object
  *                      properties:
- *                            name: 
+ *                            name:
  *                                type: string
  *                                example: "Monitor"
  *                            price:
  *                               type: number
- *                               example: 3.99 
+ *                               example: 3.99
  *      responses:
  *       201:
  *          description: Successful response
@@ -114,17 +114,16 @@ const router = Router();
  *                          ref: '#/components/schemas/Product'
  *       400:
  *            description: Bad Request - Invalid Input Data
- * 
- * 
-*/
-
+ *
+ *
+ */
 
 /**
  * @swagger
  * /products/{id}:
  *   put:
  *     summary: Updates a product with user input
- *     tags: 
+ *     tags:
  *       - Products
  *     description: Returns the updated product
  *     parameters:
@@ -133,15 +132,15 @@ const router = Router();
  *         description: Product ID
  *         required: true
  *         schema:
- *           type: integer 
+ *           type: integer
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
- *           schema: 
+ *           schema:
  *             type: object
  *             properties:
- *               name: 
+ *               name:
  *                 type: string
  *                 example: "Monitor"
  *               price:
@@ -149,7 +148,7 @@ const router = Router();
  *                 example: 3.99
  *               availability:
  *                 type: boolean
- *                 example: true             
+ *                 example: true
  *     responses:
  *       200:
  *         description: Successful response
@@ -158,10 +157,39 @@ const router = Router();
  *             schema:
  *               $ref: '#/components/schemas/Product'
  *       400:
- *         description: Bad Request - Invalid ID or Invalid Input Data 
+ *         description: Bad Request - Invalid ID or Invalid Input Data
  *       404:
  *         description: Product Not Found
  */
+
+/**
+ * @swagger
+ * /products/{id}:
+ *   patch:
+ *     summary: Update product availability
+ *     tags:
+ *       - Products
+ *     description: Returns the updated availability
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: Product ID
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       400:
+ *         description: Bad Request - Invalid ID or Invalid Input Data
+ *       404:
+ *         description: Product Not Found
+ */
+
 
 router.get("/", getProducts);
 
