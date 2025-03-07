@@ -5,14 +5,16 @@ import colors from 'colors'
 import swaggerUi from 'swagger-ui-express'
 import swaggerSpec, {swaggerUiOptions} from './config/swagger'
 
+
 //Conection
 export const connectDataBase = async () => {
     try {
         await db.authenticate()
         db.sync()
-        // console.log(colors.magenta.bold('Conexion exitosa'))
+        console.log(colors.magenta.bold('Conexion exitosa'))
     } catch (error) {
         console.log(colors.red.bold('Error al conectar'))
+        console.log(colors.red.bold(error))
     }
 }
 
