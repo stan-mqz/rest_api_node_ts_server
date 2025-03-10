@@ -5,7 +5,8 @@ import colors from "colors";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec, { swaggerUiOptions } from "./config/swagger";
 import cors, { CorsOptions } from "cors";
-import { or } from "sequelize";
+import morgan from 'morgan'
+
 
 //Conection
 export const connectDataBase = async () => {
@@ -51,6 +52,8 @@ server.use(cors(corsOptions));
 
 server.use(express.json());
 
+//Puedes usar las diferentes opciones para ver diferentes logs
+server.use(morgan('dev'))
 //Endpoint /products/lo que tenga el resto de la ruta
 server.use("/products", router);
 
