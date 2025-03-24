@@ -35,7 +35,7 @@ const corsOptions: CorsOptions = {
   origin: function (origin, callback) {
 
     //Si el origen es igual a la variable de entorno, permitimos la conexion
-    if (origin === process.env.FRONTEND_URL!) {
+    if (origin === process.env.FRONTEND_URL! ) {
       //Toma dos valores, el primero es un error, y el otro si quieres permitir la conexion
 
       //No hay errores, por lo tanto, primer parametro null, y el segundo lo indicamos como true
