@@ -33,7 +33,6 @@ const corsOptions: CorsOptions = {
     callback: Permite o negar la conexion
     */
   origin: function (origin, callback) {
-    console.log(origin);
 
     //Si el origen es igual a la variable de entorno, permitimos la conexion
     if (origin === process.env.FRONTEND_URL!) {
